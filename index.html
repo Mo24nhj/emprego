@@ -1,0 +1,470 @@
+<!DOCTYPE html> <html lang="pt">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Formulário de Candidatura - Vagas de Emprego</title>
+    <style>
+        /* Seu CSS já existente aqui */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 15px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            padding: 12px 20px;
+            margin: 10px 5px 0 0;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+        button:hover {
+            background-color: #004d40;
+        }
+        .button-group {
+            text-align: right;
+        }
+        .hidden {
+            display: none;
+        }
+        .taxa {
+            color: red;
+            font-weight: bold;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .form-section h3 {
+            color: #00796b;
+            margin-bottom: 15px;
+        }
+        .file-upload {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            margin: 15px 0 30px 0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 25px;
+            border-radius: 10px;
+            width: 85%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover {
+            color: #333;
+        }
+        .payment-method {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .payment-method:hover {
+            background-color: #f0f0f0;
+        }
+        .payment-method.selected {
+            border-color: #00796b;
+            background-color: #e0f2f1;
+        }
+        .payment-info h4 {
+            margin: 0;
+        }
+        .required-field::after {
+            content: " *";
+            color: red;
+        }
+        #countdown {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulário de Candidatura</h1>
+        <p class="taxa">Taxa de processamento: 1000MT</p>
+        <form id="empregoForm">
+
+            <!-- Etapa 1: Dados Pessoais -->
+            <section class="step" id="step-1">
+                <h3>Dados Pessoais</h3>
+
+                <label for="nomeCompleto" class="required-field">Nome Completo</label>
+                <input type="text" id="nomeCompleto" placeholder="Seu nome completo" required>
+
+                <label for="nivelAcademico" class="required-field">Nível Acadêmico</label>
+                <select id="nivelAcademico" required>
+                    <option value="">Selecione...</option>
+                    <option value="Ensino Fundamental">Ensino Fundamental</option>
+                    <option value="Ensino Médio">Ensino Médio</option>
+                    <option value="Ensino Superior">Ensino Superior</option>
+                    <option value="Pós-Graduação">Pós-Graduação</option>
+                    <option value="Outro">Outro</option>
+                </select>
+
+                <label for="sexo" class="required-field">Sexo</label>
+                <select id="sexo" required>
+                    <option value="">Selecione...</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outro">Outro</option>
+                </select>
+
+                <label for="estadoCivil" class="required-field">Estado Civil</label>
+                <select id="estadoCivil" required>
+                    <option value="">Selecione...</option>
+                    <option value="Solteiro(a)">Solteiro(a)</option>
+                    <option value="Casado(a)">Casado(a)</option>
+                    <option value="Outro">Outro</option>
+                </select>
+
+                <label for="idade" class="required-field">Idade</label>
+                <input type="number" id="idade" placeholder="Sua idade" min="14" max="100" required>
+
+                <label for="whatsapp" class="required-field">Número de WhatsApp</label>
+                <input type="tel" id="whatsapp" placeholder="Ex: 841234567" required>
+
+                <label for="email" class="required-field">E-mail</label>
+                <input type="email" id="email" placeholder="seu@email.com" required>
+
+                <div class="button-group">
+                    <button type="button" onclick="nextStep()">Próximo</button>
+                </div>
+            </section>
+
+            <!-- Etapa 2: Endereço de Residência -->
+            <section class="step hidden" id="step-2">
+                <h3>Endereço de Residência</h3>
+
+                <label for="provincia" class="required-field">Província</label>
+                <select id="provincia" required>
+                    <option value="">Selecione...</option>
+                    <option value="Maputo">Maputo</option>
+                    <option value="Gaza">Gaza</option>
+                    <option value="Inhambane">Inhambane</option>
+                    <option value="Sofala">Sofala</option>
+                    <option value="Manica">Manica</option>
+                    <option value="Tete">Tete</option>
+                    <option value="Zambézia">Zambézia</option>
+                    <option value="Nampula">Nampula</option>
+                    <option value="Cabo Delgado">Cabo Delgado</option>
+                    <option value="Niassa">Niassa</option>
+                </select>
+
+                <label for="distrito" class="required-field">Distrito</label>
+                <input type="text" id="distrito" placeholder="Seu distrito" required>
+
+                <label for="bairro" class="required-field">Bairro</label>
+                <input type="text" id="bairro" placeholder="Seu bairro" required>
+
+                <label for="numeroCasa" class="required-field">Número da Casa</label>
+                <input type="text" id="numeroCasa" placeholder="Nº da casa/rua" required>
+
+                <div class="button-group">
+                    <button type="button" onclick="prevStep()">Anterior</button>
+                    <button type="button" onclick="nextStep()">Próximo</button>
+                </div>
+            </section>
+
+            <!-- Etapa 3: Informações Profissionais -->
+            <section class="step hidden" id="step-3">
+                <h3>Informações Profissionais</h3>
+
+                <label for="emprego" class="required-field">Emprego Desejado</label>
+                <select id="emprego" required>
+                    <option value="">Selecione...</option>
+                    <option value="Motorista">Motorista</option>
+                    <option value="Segurança">Segurança</option>
+                    <option value="Recepcionista">Recepcionista</option>
+                    <option value="Empregada Doméstica">Empregada Doméstica</option>
+                    <option value="Atendente">Atendente</option>
+                    <option value="Cozinheiro(a)">Cozinheiro(a)</option>
+                    <option value="Outro">Outro</option>
+                </select>
+
+                <label for="qualificacoes" class="required-field">Qualificações</label>
+                <textarea id="qualificacoes" placeholder="Descreva suas experiências e qualificações (máx. 300 caracteres)" maxlength="300" required></textarea>
+
+                <div class="button-group">
+                    <button type="button" onclick="prevStep()">Anterior</button>
+                    <button type="button" onclick="nextStep()">Próximo</button>
+                </div>
+            </section>
+
+            <!-- Etapa 4: Documentos -->
+            <section class="step hidden" id="step-4">
+                <h3>Documentos</h3>
+                <div class="file-upload">
+                    <label for="biUpload" class="required-field">Cópia do BI</label>
+                    <input type="file" id="biUpload" accept="image/*,.pdf" required>
+                    <small>(Foto ou PDF do seu Bilhete de Identidade)</small>
+
+                    <label for="certificadosUpload">Certificados (opcional)</label>
+                    <input type="file" id="certificadosUpload" accept="image/*,.pdf">
+                    <small>(Certificados de formação ou experiência)</small>
+                </div>
+
+                <div class="button-group">
+                    <button type="button" onclick="prevStep()">Anterior</button>
+                    <button type="button" onclick="nextStep()">Próximo</button>
+                </div>
+            </section>
+
+            <!-- Etapa 5: Método de Pagamento -->
+            <section class="step hidden" id="step-5">
+                <h3>Método de Pagamento</h3>
+                <p>
+                    Para completar sua candidatura, é necessário pagar uma taxa de inscrição no valor de <strong>1000MT</strong>.
+                    Esse valor garante a análise do seu currículo e a participação no processo seletivo.
+                </p>
+                <p>Será cobrada uma taxa de processamento adicional de <span class="taxa">1000MT</span>.</p>
+
+                <div class="payment-method selected" onclick="selecionarPagamento('opay')">
+                    <div class="payment-info">
+                        <h4>Pagamento via OPay</h4>
+                        <p>Método seguro e rápido para processar sua candidatura</p>
+                    </div>
+                </div>
+
+                <p>Você será redirecionado para a página de pagamento após confirmar seus dados.</p>
+
+                <div class="button-group">
+                    <button type="button" onclick="prevStep()">Anterior</button>
+                    <button type="button" onclick="validarFormulario()">Enviar Candidatura</button>
+                </div>
+            </section>
+
+        </form>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h2>Confirmação de Dados</h2>
+            <div id="dadosConfirmacao" style="margin: 20px 0;"></div>
+            <p>Por favor, verifique se todas as informações estão corretas antes de prosseguir.</p>
+            <p>Será necessário pagar <span class="taxa">1000MT</span> para completar sua candidatura.</p>
+            <button onclick="enviarFormulario()">Confirmar e Prosseguir</button>
+            <button onclick="fecharModal()" style="background-color: #f44336;">Corrigir Dados</button>
+        </div>
+    </div>
+
+    <!-- Modal de Redirecionamento -->
+    <div id="redirectModal" class="modal">
+        <div class="modal-content">
+            <h2>Redirecionando para Pagamento</h2>
+            <div class="payment-instructions" style="background: #fff8e1; border-radius: 8px; padding: 15px; margin-bottom: 15px;">
+                <h3>Instruções para Pagamento:</h3>
+                <ol>
+                    <li>Você será redirecionado para a página segura de pagamento OPay</li>
+                    <li>Confirme que o valor é de <strong>1000MT</strong></li>
+                    <li>Complete o pagamento seguindo as instruções na tela</li>
+                    <li>Retorne a esta página após o pagamento</li>
+                </ol>
+            </div>
+            <div id="countdown">Redirecionando em 5 segundos...</div>
+            <p>Se o redirecionamento não funcionar automaticamente, clique no botão abaixo:</p>
+            <button id="manualRedirect" style="background-color: #4CAF50;">Ir para Pagamento Agora</button>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+
+        function showStep(step) {
+            for (let i = 1; i <= totalSteps; i++) {
+                document.getElementById('step-' + i).classList.add('hidden');
+            }
+            document.getElementById('step-' + step).classList.remove('hidden');
+            currentStep = step;
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function nextStep() {
+            if (validateStep(currentStep)) {
+                if (currentStep < totalSteps) {
+                    showStep(currentStep + 1);
+                }
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                showStep(currentStep - 1);
+            }
+        }
+
+        function validateStep(step) {
+            let valid = true;
+            const stepSection = document.getElementById('step-' + step);
+            const inputs = stepSection.querySelectorAll('input, select, textarea');
+
+            for (const input of inputs) {
+                if (input.hasAttribute('required')) {
+                    if (!input.value || (input.type === "file" && input.files.length === 0)) {
+                        alert(`Por favor, preencha o campo obrigatório: ${input.previousElementSibling.innerText.replace('*','').trim()}`);
+                        input.focus();
+                        valid = false;
+                        break;
+                    }
+                    // Validações específicas
+                    if (input.id === 'whatsapp') {
+                        const whatsappRegex = /^[0-9]{9}$/;
+                        if (!whatsappRegex.test(input.value)) {
+                            alert("Número de WhatsApp inválido. Deve conter 9 dígitos, sem prefixo.");
+                            input.focus();
+                            valid = false;
+                            break;
+                        }
+                    }
+                    if (input.id === 'email') {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(input.value)) {
+                            alert("Endereço de e-mail inválido.");
+                            input.focus();
+                            valid = false;
+                            break;
+                        }
+                    }
+                    if (input.id === 'idade') {
+                        const idadeNum = Number(input.value);
+                        if (idadeNum < 14 || idadeNum > 100) {
+                            alert("Por favor, insira uma idade válida entre 14 e 100 anos.");
+                            input.focus();
+                            valid = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            return valid;
+        }
+
+        function selecionarPagamento(metodo) {
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+        }
+
+        function validarFormulario() {
+            for (let i = 1; i <= totalSteps; i++) {
+                if (!validateStep(i)) {
+                    showStep(i);
+                    return;
+                }
+            }
+
+            // Preparar resumo dos dados para confirmar
+            const nome = document.getElementById('nomeCompleto').value.trim();
+            const nivel = document.getElementById('nivelAcademico').value.trim();
+            const sexo = document.getElementById('sexo').value.trim();
+            const estadoCivil = document.getElementById('estadoCivil').value.trim();
+            const idade = document.getElementById('idade').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const provincia = document.getElementById('provincia').value.trim();
+            const distrito = document.getElementById('distrito').value.trim();
+            const bairro = document.getElementById('bairro').value.trim();
+            const numeroCasa = document.getElementById('numeroCasa').value.trim();
+            const emprego = document.getElementById('emprego').value.trim();
+            const qualificacoes = document.getElementById('qualificacoes').value.trim();
+
+            const confirmacao = `
+                <strong>Nome:</strong> ${nome}<br>
+                <strong>Nível Acadêmico:</strong> ${nivel}<br>
+                <strong>Sexo:</strong> ${sexo}<br>
+                <strong>Estado Civil:</strong> ${estadoCivil}<br>
+                <strong>Idade:</strong> ${idade}<br>
+                <strong><strong>WhatsApp:</strong> ${whatsapp}<br>
+                <strong>Email:</strong> ${email}<br>
+                <strong>Província:</strong> ${provincia}<br>
+                <strong>Distrito:</strong> ${distrito}<br>
+                <strong>Bairro:</strong> ${bairro}<br>
+                <strong>Nº Casa:</strong> ${numeroCasa}<br>
+                <strong>Emprego Desejado:</strong> ${emprego}<br>
+                <strong>Qualificações:</strong> ${qualificacoes}<br>
+            `;
+
+            document.getElementById('dadosConfirmacao').innerHTML = confirmacao;
+            document.getElementById('confirmModal').style.display = 'block';
+        }
+
+        function fecharModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+
+        function enviarFormulario() {
+            document.getElementById('confirmModal').style.display = 'none';
+            document.getElementById('redirectModal').style.display = 'block';
+
+            let segundos = 5;
+            const countdown = document.getElementById('countdown');
+            const intervalo = setInterval(() => {
+                segundos--;
+                countdown.textContent = `Redirecionando em ${segundos} segundos...`;
+                if (segundos <= 0) {
+                    clearInterval(intervalo);
+                    window.location.href = "https://opay.mucamba.site/pay/JYJ33OJ0UEQS3G41V8QKGQLYQUOAFJT71W5EI8W7F8WAZSJLKVTJ1LLHH8NM?value=1000&context=Pagamento+de+serviço";
+                }
+            }, 1000);
+
+            document.getElementById('manualRedirect').onclick = function () {
+                window.location.href = "https://opay.mucamba.site/pay/JYJ33OJ0UEQS3G41V8QKGQLYQUOAFJT71W5EI8W7F8WAZSJLKVTJ1LLHH8NM?value=1000&context=Pagamento+de+serviço";
+        };
+       }
+
+    </script>
+</body>
+</html>
+ 
