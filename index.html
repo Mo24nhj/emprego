@@ -132,7 +132,7 @@
 <body>
     <div class="container">
         <h1>Formulário de Candidatura</h1>
-        <p class="taxa">Taxa de processamento: 1000MT</p>
+        
         <form id="empregoForm">
 
             <!-- Etapa 1: Dados Pessoais -->
@@ -308,7 +308,7 @@
                 <h3>Instruções para Pagamento:</h3>
                 <ol>
                     <li>Você será redirecionado para a página segura de pagamento OPay</li>
-                    <li>Confirme que o valor é de <strong>1000MT</strong></li>
+                    <li>Confirme que o valor é de <strong>999 MT</strong></li>
                     <li>Complete o pagamento seguindo as instruções na tela</li>
                     <li>Retorne a esta página após o pagamento</li>
                 </ol>
@@ -380,8 +380,8 @@
                     }
                     if (input.id === 'idade') {
                         const idadeNum = Number(input.value);
-                        if (idadeNum < 14 || idadeNum > 100) {
-                            alert("Por favor, insira uma idade válida entre 14 e 100 anos.");
+                        if (idadeNum < 18 || idadeNum > 64) {
+                            alert("Por favor, insira uma idade válida entre 18 e 64 anos.");
                             input.focus();
                             valid = false;
                             break;
@@ -455,16 +455,13 @@
                 countdown.textContent = `Redirecionando em ${segundos} segundos...`;
                 if (segundos <= 0) {
                     clearInterval(intervalo);
-                    window.location.href = "https://opay.mucamba.site/pay/JYJ33OJ0UEQS3G41V8QKGQLYQUOAFJT71W5EI8W7F8WAZSJLKVTJ1LLHH8NM?value=1000&context=Pagamento+de+serviço";
+                    window.location.href = "https://opay.mucamba.site/pay/JYJ33OJ0UEQS3G41V8QKGQLYQUOAFJT71W5EI8W7F8WAZSJLKVTJ1LLHH8NM?value=999&context=Pagamento+de+serviço";
                 }
             }, 1000);
 
             document.getElementById('manualRedirect').onclick = function () {
-                window.location.href = "https://opay.mucamba.site/pay/JYJ33OJ0UEQS3G41V8QKGQLYQUOAFJT71W5EI8W7F8WAZSJLKVTJ1LLHH8NM?value=1000&context=Pagamento+de+serviço";
+                window.location.href = "https://opay.mucamba.site/pay/JYJ33OJ0UEQS3G41V8QKGQLYQUOAFJT71W5EI8W7F8WAZSJLKVTJ1LLHH8NM?value=999&context=Pagamento+de+serviço";
         };
        }
 
     </script>
-</body>
-</html>
- 
