@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Txeneca - Empréstimos Rápidos e Seguros</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Txene<span>ca</span></a>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#vantagens">Vantagens</a></li>
+                    <li><a href="#solicitar">Solicitar Empréstimo</a></li>
+                    <li><a href="#" id="loginBtn">Área do Cliente</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content animated">
+                <h1>Empréstimos rápidos e seguros para alcançar seus objetivos</h1>
+                <p>Com a Txeneca, você tem acesso a empréstimos de 5.000 a 100.000 MZN com aprovação rápida e condições transparentes. Solução financeira para o que você precisa, quando você precisa.</p>
+                <div class="hero-buttons">
+                    <a href="#solicitar" class="btn btn-primary">Solicitar Empréstimo</a>
+                    <a href="#" class="btn btn-outline">Registar Conta</a>
+                </div>
+            </div>
+            <div class="hero-image animated">
+                <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='400' viewBox='0 0 500 400'%3E%3Crect fill='%23FF7F00' opacity='0.2' width='500' height='400'/%3E%3Ccircle fill='%23FFD700' opacity='0.4' cx='250' cy='200' r='120'/%3E%3Cpath fill='%23FFFFFF' d='M250,120 L290,220 L210,220 Z'/%3E%3C/svg%3E" alt="Txeneca Empréstimos">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="vantagens">
+        <div class="section-header">
+            <h2>Por que escolher a Txeneca?</h2>
+            <p>Oferecemos as melhores condições para o seu empréstimo com processos simples e transparentes.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card animated">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Processo Rápido</h3>
+                <p>Pedido analisado em até 24 horas após o pagamento da taxa de inscrição.</p>
+            </div>
+            <div class="feature-card animated">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Segurança Garantida</h3>
+                <p>Seus dados estão protegidos com os mais altos padrões de segurança.</p>
+            </div>
+            <div class="feature-card animated">
+                <div class="feature-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <h3>Taxas Transparentes</h3>
+                <p>Sem taxas ocultas ou surpresas desagradáveis. Tudo claro desde o início.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="como-funciona">
+        <div class="section-header">
+            <h2>Como Funciona</h2>
+            <p>Obtenha seu empréstimo em apenas 4 passos simples</p>
+        </div>
+        <div class="steps">
+            <div class="step animated">
+                <div class="step-number">1</div>
+                <div class="feature-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h3>Crie sua conta</h3>
+                <p>Registe-se com seu email ou número de telefone e crie uma senha segura.</p>
+            </div>
+            <div class="step animated">
+                <div class="step-number">2</div>
+                <div class="feature-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3>Complete seu perfil</h3>
+                <p>Informe seu endereço completo e setor de trabalho.</p>
+            </div>
+            <div class="step animated">
+                <div class="step-number">3</div>
+                <div class="feature-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <h3>Selecione o valor</h3>
+                <p>Escolha o valor desejado entre 5.000 e 100.000 MZN.</p>
+            </div>
+            <div class="step animated">
+                <div class="step-number">4</div>
+                <div class="feature-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Pague e aguarde</h3>
+                <p>Pague a taxa de inscrição e aguarde a análise do seu pedido.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration" id="solicitar">
+        <div class="section-header">
+            <h2>Solicite Seu Empréstimo</h2>
+            <p>Preencha o formulário abaixo para iniciar seu pedido de empréstimo</p>
+        </div>
+        <div class="form-container animated">
+            <div class="form-header">
+                <h2>Registo e Solicitação</h2>
+                <p>Preencha todos os campos para continuar</p>
+            </div>
+            <form id="loanForm">
+                <div class="form-group">
+                    <label for="emailPhone">Email ou Número de Telefone</label>
+                    <input type="text" id="emailPhone" required placeholder="exemplo@email.com ou +258 8X XXX XXXX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Palavra-passe</label>
+                    <input type="password" id="password" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Palavra-passe</label>
+                    <input type="password" id="confirmPassword" required>
+                </div>
+                
+                <h3 style="margin: 1.5rem 0 1rem; color: var(--primary);">Informações de Moradia</h3>
+                
+                <div class="form-group">
+                    <label for="province">Província</label>
+                    <select id="province" required>
+                        <option value="">Selecione sua província</option>
+                        <option value="maputo">Maputo</option>
+                        <option value="gaza">Gaza</option>
+                        <option value="inhambane">Inhambane</option>
+                        <option value="sofala">Sofala</option>
+                        <option value="manica">Manica</option>
+                        <option value="tete">Tete</option>
+                        <option value="zambezia">Zambezia</option>
+                        <option value="nampula">Nampula</option>
+                        <option value="cabo_delgado">Cabo Delgado</option>
+                        <option value="niassa">Niassa</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="neighborhood">Bairro</label>
+                    <input type="text" id="neighborhood" required placeholder="Nome do seu bairro">
+                </div>
+                
+                <div class="form-group">
+                    <label for="block">Quarteirão</label>
+                    <input type="text" id="block" required placeholder="Número do quarteirão">
+                </div>
+                
+                <div class="form-group">
+                    <label for="houseNumber">Número da Casa</label>
+                    <input type="text" id="houseNumber" required placeholder="Número da sua casa">
+                </div>
+                
+                <div class="form-group">
+                    <label for="workSector">Setor de Trabalho</label>
+                    <select id="workSector" required>
+                        <option value="">Selecione seu setor de trabalho</option>
+                        <option value="agricultura">Agricultura</option>
+                        <option value="comercio">Comércio</option>
+                        <option value="construcao">Construção Civil</option>
+                        <option value="educacao">Educação</option>
+                        <option value="saude">Saúde</option>
+                        <option value="servicos">Serviços</option>
+                        <option value="transporte">Transporte</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                
+                <div class="loan-calculator">
+                    <h3 style="margin-bottom: 1rem; color: var(--primary);">Valor do Empréstimo</h3>
+                    <div class="form-group">
+                        <label for="loanAmount">Selecione o valor (MZN)</label>
+                        <input type="range" id="loanAmount" min="5000" max="100000" step="1000" value="25000" required>
+                        <div style="display: flex; justify-content: space-between; margin-top: 0.5rem;">
+                            <span>5.000 MZN</span>
+                            <span id="loanAmountValue">25.000 MZN</span>
+                            <span>100.000 MZN</span>
+                        </div>
+                    </div>
+                    
+                    <div class="calculator-result">
+                        <div>Taxa de Inscrição:</div>
+                        <div id="registrationFee">999 MZN</div>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 2rem;">
+                    <div class="form-check">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Li e aceito os <a href="#" style="color: var(--primary);">Termos e Condições</a> e a <a href="#" style="color: var(--primary);">Política de Privacidade</a></label>
+                    </div>
+                </div>
+                
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                        Continuar para Pagamento
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section-header">
+            <h2>O que nossos clientes dizem</h2>
+            <p>Experiências reais de quem já usou nossos serviços</p>
+        </div>
+        <div class="testimonials-container">
+            <!-- Testimonials will be dynamically added here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">Txene<span>ca</span></div>
+                <p>Oferecendo soluções financeiras rápidas e confiáveis para ajudar você a alcançar seus objetivos.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#vantagens">Vantagens</a></li>
+                    <li><a href="#solicitar">Solicitar Empréstimo</a></li>
+                    <li><a href="#">Área do Cliente</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contactos</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> info@txeneca.co.mz</li>
+                    <li><i class="fas fa-phone"></i> +258 84 123 4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Av. 25 de Setembro, Maputo</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 Txeneca. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Support Button -->
+    <div class="support-btn" id="supportBtn">
+        <i class="fas fa-headset"></i>
+    </div>
+
+    <!-- Notifications Container -->
+    <div class="notifications-container" id="notificationsContainer"></div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Área do Cliente</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmailPhone">Email ou Telefone</label>
+                        <input type="text" id="loginEmailPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Palavra-passe</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <div class="form-group" style="margin-top: 1.5rem;">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Entrar</button>
+                    </div>
+                    <p style="text-align: center; margin-top: 1rem;">
+                        Ainda não tem conta? <a href="#" style="color: var(--primary); font-weight: 500;">Registe-se aqui</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support Modal -->
+    <div class="modal" id="supportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Suporte ao Cliente</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Entre em contato com nossa equipe de suporte para qualquer dúvida ou problema.</p>
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <a href="mailto:info@txeneca.co.mz" class="btn btn-primary" style="width: 100%; display: block; text-align: center;">
+                        <i class="fas fa-envelope"></i> Enviar Email
+                    </a>
+                </div>
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                    Responderemos o mais rápido possível.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
